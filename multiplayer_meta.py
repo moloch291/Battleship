@@ -77,3 +77,5 @@ def turn_barrier(player, enemy):
 
 
 def get_results(locations):
+    results = None
+    return results

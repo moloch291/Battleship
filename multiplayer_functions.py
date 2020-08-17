@@ -29,7 +29,7 @@ def get_hidden_table(table):
 
 
 def get_player_attack(hidden_table):
-    player_attack = None
+    player_attack = input("Choose a filed to attack! ")
     return player_attack
 
 
