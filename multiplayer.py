@@ -1,20 +1,14 @@
 import multiplayer_functions
 import multiplayer_meta
-import os
 
 
 def game_cycle():
     players = multiplayer_meta.get_players()
-    player1_table = multiplayer_functions.create_table()
-    player2_table = multiplayer_functions.create_table()
-    player1_ships = multiplayer_functions.create_ships()
-    player2_ships = multiplayer_functions.create_ships()
-    player1_locations = multiplayer_functions.get_ship_locations(player1_table, player1_ships)
-    player2_locations = multiplayer_functions.get_ship_locations(player2_table, player2_ships)
-    player1_table = multiplayer_functions.put_ships_on_table(player1_table, player1_locations)
-    player2_table = multiplayer_functions. put_ships_on_table(player2_table, player2_locations)
-    player1_hidden_table = multiplayer_functions.get_hidden_table(player1_table)
-    player2_hidden_table = multiplayer_functions.get_hidden_table(player2_table)
+    tables = multiplayer_meta.get_tables()
+    ships = multiplayer_meta.get_ships()
+    locations = multiplayer_meta.get_locations(tables, ships)
+    tables = multiplayer_meta.refresh_tables(tables, locations)
+    hidden_tables = multiplayer_meta.get_hidden_tables(tables)
     while player1_locations and player2_locations:
         multiplayer_meta.turn_barrier(players[0], players[1])
         player1_attack = multiplayer_meta.player_turn(player1_table, player2_hidden_table)

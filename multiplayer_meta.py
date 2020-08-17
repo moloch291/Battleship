@@ -12,6 +12,41 @@ def get_players():
     return players
 
 
+def get_tables():
+    player1_table = multiplayer_functions.create_table()
+    player2_table = multiplayer_functions.create_table()
+    tables = [player1_table, player2_table]
+    return tables
+
+
+def get_ships():
+    player1_ships = multiplayer_functions.create_ships()
+    player2_ships = multiplayer_functions.create_ships()
+    ships = [player1_ships, player2_ships]
+    return ships
+
+
+def get_locations(tables, ships):
+    player1_locations = multiplayer_functions.get_ship_locations(tables[0], ships[0])
+    player2_locations = multiplayer_functions.get_ship_locations(tables[1], ships[1])
+    locations = [player1_locations, player2_locations]
+    return locations
+
+
+def refresh_tables(tables, locations)
+    player1_table = multiplayer_functions.put_ships_on_table(tables[0], locations[0])
+    player2_table = multiplayer_functions. put_ships_on_table(tables[1], locations[1])
+    tables = [player1_table, player2_table]
+    return tables
+
+
+def get_hidden_tables(tables):
+    player1_hidden_table = multiplayer_functions.get_hidden_table(tables[0])
+    player2_hidden_table = multiplayer_functions.get_hidden_table(tables[1])
+    hidden_tables = [player1_hidden_table, player2_hidden_table]
+    return hidden_tables
+
+
 def player_turn(table, hidden_table):
     print("Enemy's table:\n" + str(hidden_table) + "\nYour field:\n" + table)
     player_attack = multiplayer_functions.get_player_attack(hidden_table)
