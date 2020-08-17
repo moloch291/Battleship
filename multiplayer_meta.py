@@ -33,7 +33,7 @@ def get_locations(tables, ships):
     return locations
 
 
-def refresh_tables(tables, locations)
+def refresh_tables(tables, locations):
     player1_table = multiplayer_functions.put_ships_on_table(tables[0], locations[0])
     player2_table = multiplayer_functions. put_ships_on_table(tables[1], locations[1])
     tables = [player1_table, player2_table]
@@ -48,6 +48,7 @@ def get_hidden_tables(tables):
 
 
 def player_turn(table, hidden_table):
+    os.system('clear')
     print("Enemy's table:\n" + str(hidden_table) + "\nYour field:\n" + table)
     player_attack = multiplayer_functions.get_player_attack(hidden_table)
     return player_attack
@@ -64,7 +65,7 @@ def update_player_locations(ship_locations, attack_status):
     return ship_locations
 
 
-def update_hidden_table(hidden_table, player_attack, attack_status):
+def update_hidden_tables(hidden_table, player_attack, attack_status):
     hidden_table = multiplayer_functions.update_hidden_table(hidden_table, player_attack, attack_status)
     return hidden_table
 
@@ -73,3 +74,6 @@ def turn_barrier(player, enemy):
     os.system('clear')
     print(player + " 's turn! (" + enemy + " shouldn't look!!!")
     time.sleep(3)
+
+
+def get_results(locations):
