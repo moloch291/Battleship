@@ -48,9 +48,9 @@ def get_hidden_tables(tables):
     return hidden_tables
 
 
-def player_turn(table, hidden_table):
+def player_turn(table, hidden_table, enemy):
     os.system('clear')
-    print("Enemy's table:\n" + hidden_table + "\nYour field:\n" + table)
+    print(enemy + "'s table:\n" + hidden_table + "\nYour table:\n" + table)
     player_attack = multiplayer_functions.get_player_attack(hidden_table)
     return player_attack
 

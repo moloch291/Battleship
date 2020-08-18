@@ -5,6 +5,7 @@ import menu
 def game_cycle():
     players = multiplayer_meta.get_players()
     tables = multiplayer_meta.get_tables()
+    print(tables[0])
     ships = multiplayer_meta.get_ships()
     locations = multiplayer_meta.get_locations(tables, ships)
     tables = multiplayer_meta.refresh_tables(tables, locations)
