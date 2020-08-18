@@ -3,6 +3,18 @@ import os
 import time
 
 
+def create_player_profiles():
+    os.system('clear')
+    print("Creating player profiles.")
+    time.sleep(0.25)
+    os.system('clear')
+    print("Creating player profiles..")
+    time.sleep(0.25)
+    os.system('clear')
+    print("Creating player profiles...")
+    time.sleep(0.25)
+
+
 def get_players():
     print("Player 1:")
     player1 = multiplayer_functions.get_name()
@@ -17,6 +29,7 @@ def get_tables():
     player1_table = multiplayer_functions.create_table()
     player2_table = multiplayer_functions.create_table()
     tables = [player1_table, player2_table]
+    os
     return tables
 
 
@@ -27,9 +40,9 @@ def get_ships():
     return ships
 
 
-def get_locations(tables, ships):
-    player1_locations = multiplayer_functions.get_ship_locations(tables[0], ships[0])
-    player2_locations = multiplayer_functions.get_ship_locations(tables[1], ships[1])
+def get_locations(players, tables, ships):
+    player1_locations = multiplayer_functions.get_ship_locations(players[0], tables[0], ships[0])
+    player2_locations = multiplayer_functions.get_ship_locations(players[1], tables[1], ships[1])
     locations = [player1_locations, player2_locations]
     return locations
 

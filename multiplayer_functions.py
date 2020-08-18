@@ -1,5 +1,10 @@
+import menu
+
+
 def get_name():
     name = input("Player name: ")
+    if name == "quit":
+        menu.menu()
     return name
 
 
@@ -26,13 +31,16 @@ def create_ships():
     return ships
 
 
-def get_ship_locations(table, ships):
-    ship_locations = []
+def get_ship_locations(player, table, ships):
+    ship_locations = {}
+    print(player + "Now it is time to place your ships on the battlefield!\nThese are your ships: " + str(ships) +
+          """\nFirst choose a letter and a number where you want your ships to begin. Finally decide if you want to 
+          place it horizontally or vertically!""")
     return ship_locations
 
 
-def put_ships_on_table(table, ship_locations):
-
+def put_ships_on_table(table, ship_locations, player):
+    print(player + "!\nPlease put your ships on the battlefield!")
     return table
 
 
