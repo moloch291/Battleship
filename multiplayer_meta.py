@@ -22,6 +22,7 @@ def get_players():
     player2 = multiplayer_functions.get_name()
     players = [player1, player2]
     print("Welcome " + player1 + " and " + player2 + "!\nLet's play!")
+    time.sleep(2)
     return players
 
 
@@ -29,7 +30,6 @@ def get_tables():
     player1_table = multiplayer_functions.create_table()
     player2_table = multiplayer_functions.create_table()
     tables = [player1_table, player2_table]
-    os
     return tables
 
 
@@ -40,16 +40,22 @@ def get_ships():
     return ships
 
 
-def get_locations(players, tables, ships):
-    player1_locations = multiplayer_functions.get_ship_locations(players[0], tables[0], ships[0])
-    player2_locations = multiplayer_functions.get_ship_locations(players[1], tables[1], ships[1])
+def get_locations(players, ships):
+    os.system('clear')
+    print("Placing ships on the table... " + players[0] + " only!\n(Enemy shouldn't look)")
+    time.sleep(3)
+    player1_locations = multiplayer_functions.get_ship_locations(players[0], ships[0])
+    os.system('clear')
+    print("Placing ships on the table... " + players[1] + " only!\n(Enemy shouldn't look)")
+    time.sleep(3)
+    player2_locations = multiplayer_functions.get_ship_locations(players[1], ships[1])
     locations = [player1_locations, player2_locations]
     return locations
 
 
-def refresh_tables(tables, locations):
-    player1_table = multiplayer_functions.put_ships_on_table(tables[0], locations[0])
-    player2_table = multiplayer_functions. put_ships_on_table(tables[1], locations[1])
+def refresh_tables(tables, locations, players):
+    player1_table = multiplayer_functions.put_ships_on_table(tables[0], locations[0], players[0])
+    player2_table = multiplayer_functions. put_ships_on_table(tables[1], locations[1], players[1])
     tables = [player1_table, player2_table]
     return tables
 

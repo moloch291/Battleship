@@ -23,19 +23,25 @@ _9_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_"""
 
 
 def create_ships():
-    ships = {0: "XXXXXX",
-             1: "XXXXX",
-             2: "XXXX",
-             3: "XXX",
-             4: "XX"}
+    ships = {1: "XXXXXX",
+             2: "XXXXX",
+             3: "XXXX",
+             4: "XXX",
+             5: "XX"}
     return ships
 
 
-def get_ship_locations(player, table, ships):
-    ship_locations = {}
-    print(player + "Now it is time to place your ships on the battlefield!\nThese are your ships: " + str(ships) +
-          """\nFirst choose a letter and a number where you want your ships to begin. Finally decide if you want to 
-          place it horizontally or vertically!""")
+def get_ship_locations(player, ships):
+    ship_locations = {1: "",
+                      2: "",
+                      3: "",
+                      4: "",
+                      5: ""}
+    print(player + "! Now it is time to place your ships on the battlefield!\nThese are your ships: " + str(ships) +
+          """\nFirst choose a letter and a number where you want your ships to begin. Additionally decide if you want to 
+          place them horizontally or vertically!""")
+    for i in range(5):
+        ship_locations[i] = input("Choose a letter!").capitalize()
     return ship_locations
 
 
