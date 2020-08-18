@@ -37,7 +37,7 @@ def get_ship_locations(player, ships):
                       3: ""}
     print(player + "! Now it is time to place your ships on the battlefield!\nThese are your ships: " + str(ships) +
           """\nFirst choose a letter and a number where you want your ships to begin. You can place them horizontally 
-          or vertically!""")
+or vertically!""")
     for i in range(4):
         print("Ship number {}!".format(i))
         ship_locations[i] = get_ship_details_for_location()
@@ -54,22 +54,19 @@ def get_ship_details_for_location():
 
 
 def get_letter_for_location():
-    letter = input("Type in a letter for your ship to start at!\nIt should be From A to I! ").capitalize()
-    if letter == "quit":
-        menu.menu()
+    letter = str(input("Type in a letter for your ship to start at!\nIt should be From A to I! ").capitalize())
     letter = letter_check(letter)
     return letter
 
 
 def letter_check(letter):
-    for i in "ABCDEFGHI":
-        if letter == i:
-            return letter
-        else:
-            print("Invalid letter!")
-            letter = get_letter_for_location()
-            letter = letter_check(letter)
-            return letter
+    if letter in "ABCDEFGHI":
+        return letter
+    else:
+        print("Invalid letter!")
+        letter = get_letter_for_location()
+        letter = letter_check(letter)
+        return letter
 
 
 def get_number_for_location():
@@ -79,9 +76,8 @@ def get_number_for_location():
 
 
 def number_check(number):
-    for i in "123456789":
-        if i == number:
-            return number
+    if number in "123456789":
+        return number
     else:
         print("Invalid number!")
         number = get_number_for_location()

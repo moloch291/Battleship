@@ -42,7 +42,7 @@ def get_ships():
 
 def get_locations(players, ships):
     os.system('clear')
-    print("Placing ships on the table... " + players[0] + " only!\n(Enemy shouldn't look)")
+    print("Placing ships on the table... " + players[0] + " only!\n(Enemy shouldn't look...)")
     time.sleep(3)
     player1_locations = multiplayer_functions.get_ship_locations(players[0], ships[0])
     os.system('clear')
@@ -58,6 +58,10 @@ def get_hidden_tables(tables):
     player2_hidden_table = multiplayer_functions.get_hidden_table(tables[1])
     hidden_tables = [player1_hidden_table, player2_hidden_table]
     return hidden_tables
+
+
+def refresh_tables(tables):
+
 
 
 def player_turn(table, hidden_table, enemy):
