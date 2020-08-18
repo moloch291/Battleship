@@ -9,6 +9,7 @@ def get_players():
     print("Player 2:")
     player2 = multiplayer_functions.get_name()
     players = [player1, player2]
+    print("Welcome " + player1 + " and " + player2 + "!\nLet's play!")
     return players
 
 
@@ -49,14 +50,15 @@ def get_hidden_tables(tables):
 
 def player_turn(table, hidden_table):
     os.system('clear')
-    print("Enemy's table:\n" + str(hidden_table) + "\nYour field:\n" + table)
+    print("Enemy's table:\n" + hidden_table + "\nYour field:\n" + table)
     player_attack = multiplayer_functions.get_player_attack(hidden_table)
     return player_attack
 
 
-def get_attack_status(player_attack, ship_locations):
-    attack_status = multiplayer_functions.attack_check(player_attack, ship_locations)
+def get_attack_status(player_attack, table):
+    attack_status = multiplayer_functions.attack_check(player_attack, table)
     multiplayer_functions.get_feedback(attack_status)
+    time.sleep(2)
     return attack_status
 
 

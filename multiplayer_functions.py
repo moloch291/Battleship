@@ -9,7 +9,7 @@ def create_table():
 
 
 def create_ships():
-    ships = None
+    ships = {}
     return ships
 
 
@@ -29,11 +29,11 @@ def get_hidden_table(table):
 
 
 def get_player_attack(hidden_table):
-    player_attack = input("Choose a filed to attack! ")
+    player_attack = input("Choose a filed to attack!\n")
     return player_attack
 
 
-def attack_check(player_attack, ship_locations):
+def attack_check(player_attack, table):
     attack_status = None
     return attack_status
 
