@@ -8,7 +8,6 @@ def game_cycle():
     tables = multiplayer_meta.get_tables()
     ships = multiplayer_meta.get_ships()
     locations = multiplayer_meta.get_locations(players, ships)
-    tables = multiplayer_meta.refresh_tables(tables, locations, players)
     hidden_tables = multiplayer_meta.get_hidden_tables(tables)
     while locations[0] and locations[1]:
         multiplayer_meta.turn_barrier(players[0], players[1])

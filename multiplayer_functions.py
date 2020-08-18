@@ -38,29 +38,38 @@ def get_ship_locations(player, ships):
                       4: "",
                       5: ""}
     print(player + "! Now it is time to place your ships on the battlefield!\nThese are your ships: " + str(ships) +
-          """\nFirst choose a letter and a number where you want your ships to begin. Additionally decide if you want to 
-          place them horizontally or vertically!""")
+          """\nFirst choose a letter and a number where you want your ships to begin. You can place them horizontally or 
+          vertically!""")
     for i in range(5):
-        ship_locations[i] = input("Choose a letter!").capitalize()
+        print("Ship number {}!".format(i + 1))
+        ship_locations[i + 1] = put_ships_on_table()
     return ship_locations
 
 
-def put_ships_on_table(table, ship_locations, player):
-    print(player + "!\nPlease put your ships on the battlefield!")
-    return table
+def put_ships_on_table():
+    letter = input("Type in a letter! From A to I! ").capitalize()
+    number = str(input("Type in a number between 1 and 9! "))
+    type_of_placement: str = input("Place it horizontally or vertically? (h/v) ")
+    location: str = letter + number + type_of_placement
+    return location
 
 
 def get_hidden_table(table):
-    hidden_table = None
+    hidden_table = table
     return hidden_table
 
 
-def get_player_attack(hidden_table):
+def get_player_attack():
     player_attack = input("Choose a filed to attack!\n")
     return player_attack
 
 
-def attack_check(player_attack, table):
+def player_attack_check(player_attack):
+    player_attack = None
+    return player_attack
+
+
+def attack_status_check(player_attack, table):
     attack_status = None
     return attack_status
 
