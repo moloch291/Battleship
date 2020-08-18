@@ -23,35 +23,64 @@ _9_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_"""
 
 
 def create_ships():
-    ships = {1: "XXXXXX",
-             2: "XXXXX",
-             3: "XXXX",
-             4: "XXX",
-             5: "XX"}
+    ships = {0: "XXXXX",
+             1: "XXXX",
+             2: "XXX",
+             3: "XX"}
     return ships
 
 
 def get_ship_locations(player, ships):
-    ship_locations = {1: "",
+    ship_locations = {0: "",
+                      1: "",
                       2: "",
-                      3: "",
-                      4: "",
-                      5: ""}
+                      3: ""}
     print(player + "! Now it is time to place your ships on the battlefield!\nThese are your ships: " + str(ships) +
           """\nFirst choose a letter and a number where you want your ships to begin. You can place them horizontally or 
           vertically!""")
-    for i in range(5):
-        print("Ship number {}!".format(i + 1))
-        ship_locations[i + 1] = put_ships_on_table()
+    for i in range(4):
+        print("Ship number {}!".format(i))
+        ship_locations[i] = get_ship_locations()
     return ship_locations
 
 
-def put_ships_on_table():
-    letter = input("Type in a letter! From A to I! ").capitalize()
-    number = str(input("Type in a number between 1 and 9! "))
+def get_ship_locations():
+    letter = get_letter_for_location()
+    number =
     type_of_placement: str = input("Place it horizontally or vertically? (h/v) ")
     location: str = letter + number + type_of_placement
     return location
+
+
+def get_letter_for_location():
+    letter = input("Type in a letter for your ship to start at!\nIt should be From A to I! ").capitalize()
+    letter = letter_check(letter)
+    return letter
+
+
+def letter_check(letter):
+    for i in "ABCDEFGHI":
+        if letter == i:
+            return letter
+        else:
+            get_letter_for_location()
+            letter = letter_check(letter)
+            return letter
+
+
+def get_number_for_location():
+    number = str(input("Type in a number between 1 and 9! "))
+    number = number_check(number)
+
+
+def number_check(number):
+    for i in "123456789":
+        if i == number:
+            return number
+    else:
+        number = get_number_for_location()
+        number = number_check(number)
+        return number
 
 
 def get_hidden_table(table):
