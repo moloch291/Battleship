@@ -36,24 +36,27 @@ def get_ship_locations(player, ships):
                       2: "",
                       3: ""}
     print(player + "! Now it is time to place your ships on the battlefield!\nThese are your ships: " + str(ships) +
-          """\nFirst choose a letter and a number where you want your ships to begin. You can place them horizontally or 
-          vertically!""")
+          """\nFirst choose a letter and a number where you want your ships to begin. You can place them horizontally 
+          or vertically!""")
     for i in range(4):
         print("Ship number {}!".format(i))
-        ship_locations[i] = get_ship_locations()
+        ship_locations[i] = get_ship_details_for_location()
     return ship_locations
 
 
-def get_ship_locations():
+def get_ship_details_for_location():
     letter = get_letter_for_location()
-    number =
-    type_of_placement: str = input("Place it horizontally or vertically? (h/v) ")
+    number = get_number_for_location()
+    type_of_placement = get_type_of_placement_for_location()
     location: str = letter + number + type_of_placement
+    print(location)
     return location
 
 
 def get_letter_for_location():
     letter = input("Type in a letter for your ship to start at!\nIt should be From A to I! ").capitalize()
+    if letter == "quit":
+        menu.menu()
     letter = letter_check(letter)
     return letter
 
@@ -63,14 +66,16 @@ def letter_check(letter):
         if letter == i:
             return letter
         else:
-            get_letter_for_location()
+            print("Invalid letter!")
+            letter = get_letter_for_location()
             letter = letter_check(letter)
             return letter
 
 
 def get_number_for_location():
-    number = str(input("Type in a number between 1 and 9! "))
+    number = input("Type in a number between 1 and 9! ")
     number = number_check(number)
+    return number
 
 
 def number_check(number):
@@ -78,9 +83,26 @@ def number_check(number):
         if i == number:
             return number
     else:
+        print("Invalid number!")
         number = get_number_for_location()
         number = number_check(number)
         return number
+
+
+def get_type_of_placement_for_location():
+    type_of_placement = input("Place it horizontally or vertically? (h/v) ")
+    type_of_placement = check_type_of_placement(type_of_placement)
+    return type_of_placement
+
+
+def check_type_of_placement(type_of_placement):
+    if type_of_placement == "h" or type_of_placement == "v":
+        return type_of_placement
+    else:
+        print("Invalid type!")
+        type_of_placement = get_type_of_placement_for_location()
+        type_of_placement = check_type_of_placement(type_of_placement)
+        return type_of_placement
 
 
 def get_hidden_table(table):
