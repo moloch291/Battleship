@@ -60,8 +60,7 @@ def get_hidden_tables(tables):
     return hidden_tables
 
 
-def refresh_tables(tables):
-
+#def refresh_tables(tables):
 
 
 def player_turn(table, hidden_table, enemy):

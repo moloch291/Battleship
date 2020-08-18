@@ -35,16 +35,18 @@ def get_ship_locations(player, ships):
                       1: "",
                       2: "",
                       3: ""}
-    print(player + "! Now it is time to place your ships on the battlefield!\nThese are your ships: " + str(ships) +
-          """\nFirst choose a letter and a number where you want your ships to begin. You can place them horizontally 
+    print(player + "! Now it is time to place your ships on the battlefield!\nThese are your ships: ")
+    for key, value in ships.items():
+        print(key, value)
+    print("""\nFirst choose a letter and a number where you want your ships to begin. You can place them horizontally 
 or vertically!""")
     for i in range(4):
         print("Ship number {}!".format(i))
-        ship_locations[i] = get_ship_details_for_location()
+        ship_locations[i] = get_details_for_location()
     return ship_locations
 
 
-def get_ship_details_for_location():
+def get_details_for_location():
     letter = get_letter_for_location()
     number = get_number_for_location()
     type_of_placement = get_type_of_placement_for_location()
