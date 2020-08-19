@@ -40,17 +40,38 @@ def get_ships():
     return ships
 
 
-def get_locations(players, ships):
+def get_locations(players, ships, tables):
     os.system('clear')
     print("Placing ships on the table... " + players[0] + " only!\n(Enemy shouldn't look...)")
     time.sleep(3)
-    player1_locations = multiplayer_functions.get_ship_locations(players[0], ships[0])
+    player1_locations = get_ship_locations(players[0], ships[0], tables[0])
     os.system('clear')
     print("Placing ships on the table... " + players[1] + " only!\n(Enemy shouldn't look)")
     time.sleep(3)
-    player2_locations = multiplayer_functions.get_ship_locations(players[1], ships[1])
+    player2_locations = get_ship_locations(players[1], ships[1], tables[1])
     locations = [player1_locations, player2_locations]
     return locations
+
+
+def get_ship_locations(player, ships, table):
+    ship_locations = {0: "",
+                      1: "",
+                      2: "",
+                      3: ""}
+    print(player + "! Now it is time to place your ships on the battlefield!\nThese are your ships:")
+    for key, value in ships.items():
+        print(key, value)
+    print("""\nFirst choose a letter and a number where you want your ships to begin. You can place them horizontally 
+or vertically. Please consider carefully the size of the ships and the battlefield! Also consider positioning wisely."""
+          )
+    for i in range(4):
+        os.system('clear')
+        print("Your ships:\n" + str(ships))
+        print(table)
+        print("Ship number {}!".format(i))
+        ship_locations[i] = multiplayer_functions.get_details_for_location()
+
+    return ship_locations
 
 
 def get_hidden_tables(tables):
@@ -60,7 +81,11 @@ def get_hidden_tables(tables):
     return hidden_tables
 
 
-#def refresh_tables(tables):
+def refresh_tables(tables, locations, ships):
+    player1_table = multiplayer_functions.refresh_tables(tables[0], locations[0], ships[0])
+    player2_table = multiplayer_functions.refresh_tables(tables[1], locations[1], ships[1])
+    tables = [player1_table, player2_table]
+    return tables
 
 
 def player_turn(table, hidden_table, enemy):

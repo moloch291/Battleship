@@ -17,7 +17,6 @@ def menu():
         print("Good bye!")
         quit()
     else:
-        os.system('clear')
         print("Invalid input!\nPlease type in an available option or it's number!")
         time.sleep(2)
         menu()

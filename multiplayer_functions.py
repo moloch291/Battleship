@@ -1,4 +1,5 @@
 import menu
+import refresh_tables
 
 
 def get_name():
@@ -9,16 +10,7 @@ def get_name():
 
 
 def create_table():
-    table = """_0_|_A_|_B_|_C_|_D_|_E_|_F_|_G_|_H_|_I_|_
-_1_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_
-_2_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_
-_3_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_
-_4_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_
-_5_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_
-_6_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_
-_7_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_
-_8_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_
-_9_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_"""
+    table = """_0_|_A_|_B_|_C_|_D_|_E_|_F_|_G_|_H_|_I_|_\n_1_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_\n_2_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_\n_3_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_\n_4_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_\n_5_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_\n_6_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_\n_7_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_\n_8_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_\n_9_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_~_|_"""
     return table
 
 
@@ -28,23 +20,6 @@ def create_ships():
              2: "XXX",
              3: "XX"}
     return ships
-
-
-def get_ship_locations(player, ships):
-    ship_locations = {0: "",
-                      1: "",
-                      2: "",
-                      3: ""}
-    print(player + "! Now it is time to place your ships on the battlefield!\nThese are your ships:")
-    for key, value in ships.items():
-        print(key, value)
-    print("""\nFirst choose a letter and a number where you want your ships to begin. You can place them horizontally 
-or vertically. Please consider carefully the size of the ships and the battlefield! Also consider positioning wisely."""
-          )
-    for i in range(4):
-        print("Ship number {}!".format(i))
-        ship_locations[i] = get_details_for_location()
-    return ship_locations
 
 
 def get_details_for_location():
@@ -107,6 +82,17 @@ def check_type_of_placement(type_of_placement):
 def get_hidden_table(table):
     hidden_table = table
     return hidden_table
+
+
+def refresh_tables(table, locations, ships):
+    for location in locations:
+        for value in location:
+            if "h" in value:
+                tables = refresh_tables.refresh_horizontally(table, locations, ships)
+                return tables
+            elif "v" in value:
+                tables = refresh_tables.refresh_vertically(table, locations, ships)
+                return tables
 
 
 def get_player_attack():
