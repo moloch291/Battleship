@@ -88,10 +88,10 @@ def refresh_tables(table, locations, ships):
     for location in locations:
         for value in location:
             if "h" in value:
-                tables = refresh_tables.refresh_horizontally(table, locations, ships)
+                tables = refresh_tables.horizontally(table, locations, ships)
                 return tables
             elif "v" in value:
-                tables = refresh_tables.refresh_vertically(table, locations, ships)
+                tables = refresh_tables.vertically(table, locations, ships)
                 return tables
 
 
