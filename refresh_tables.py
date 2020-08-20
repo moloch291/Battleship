@@ -29,7 +29,9 @@ def draw_on_table_horizontally(counter, table, locations):
 
 
 def get_vertical_starting_point(table, locations):
-    return table[46 + (4 * locations[2])]
+    if locations[0] in "ABC":
+        return table[46 + (4 * locations[2])]
+
 
 
 def get_vertical_ending_point(table, counter, starting_point):
