@@ -68,7 +68,8 @@ or vertically. Please consider carefully the size of the ships and the battlefie
         print(table)
         print("Ship number {}!".format(i))
         ship_locations[i] = multiplayer_functions.get_details_for_location()
-        return table
+        table = multiplayer_functions.refresh_table(table, ship_locations, ships)
+        print(ship_locations)
     return table
 
 
