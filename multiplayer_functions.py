@@ -83,14 +83,15 @@ def get_hidden_table(table):
     return hidden_table
 
 
-def refresh_tables(table, locations, ships):
+def refresh_table(table, locations, ships):
     for value in locations.items():
-        if "h" in value:
-            tables = refresh_tables.horizontally(table, locations, ships)
-            return tables
-        elif "v" in value:
-            tables = refresh_tables.vertically(table, locations, ships)
-            return tables
+        if value:
+            if "h" in value:
+                tables = refresh_tables.horizontally(table, locations, ships)
+                return tables
+            elif "v" in value:
+                tables = refresh_tables.vertically(table, locations, ships)
+                return tables
 
 
 def get_player_attack():

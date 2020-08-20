@@ -44,13 +44,13 @@ def get_locations(players, ships, tables):
     os.system('clear')
     print("Placing ships on the table... " + players[0] + " only!\n(Enemy shouldn't look...)")
     time.sleep(3)
-    player1_locations = get_ship_locations(players[0], ships[0], tables[0])
+    player1_table = get_ship_locations(players[0], ships[0], tables[0])
     os.system('clear')
     print("Placing ships on the table... " + players[1] + " only!\n(Enemy shouldn't look)")
     time.sleep(3)
-    player2_locations = get_ship_locations(players[1], ships[1], tables[1])
-    locations = [player1_locations, player2_locations]
-    return locations
+    player2_table = get_ship_locations(players[1], ships[1], tables[1])
+    tables = [player1_table, player2_table]
+    return tables
 
 
 def get_ship_locations(player, ships, table):
@@ -69,9 +69,10 @@ or vertically. Please consider carefully the size of the ships and the battlefie
         print("Your ships:\n" + str(ships))
         print(table)
         print("Ship number {}!".format(i))
-
         ship_locations[i] = multiplayer_functions.get_details_for_location()
-    return ship_locations
+        table = multiplayer_functions.refresh_table(table, ship_locations, ships)
+        return table
+    return table
 
 
 def get_hidden_tables(tables):
@@ -79,13 +80,6 @@ def get_hidden_tables(tables):
     player2_hidden_table = multiplayer_functions.get_hidden_table(tables[1])
     hidden_tables = [player1_hidden_table, player2_hidden_table]
     return hidden_tables
-
-
-def refresh_tables(tables, locations, ships):
-    player1_table = multiplayer_functions.refresh_tables(tables[0], locations[0], ships[0])
-    player2_table = multiplayer_functions.refresh_tables(tables[1], locations[1], ships[1])
-    tables = [player1_table, player2_table]
-    return tables
 
 
 def player_turn(table, hidden_table, enemy):
