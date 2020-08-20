@@ -42,8 +42,7 @@ def draw_vertical_ship(table, counter, starting_point, ending_point):
 
 
 def get_horizontal_starting_point(table, locations):
-    starting_point = None
-    return starting_point
+    return table[46 + (4 * locations[2])]
 
 
 def get_horizontal_ending_point(table, counter, starting_point):
