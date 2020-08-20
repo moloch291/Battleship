@@ -59,8 +59,6 @@ def get_ship_locations(player, ships, table):
                       2: "",
                       3: ""}
     print(player + "! Now it is time to place your ships on the battlefield!\nThese are your ships:")
-    for key, value in ships.items():
-        print(key, value)
     print("""\nFirst choose a letter and a number where you want your ships to begin. You can place them horizontally 
 or vertically. Please consider carefully the size of the ships and the battlefield! Also consider positioning wisely."""
           )
@@ -70,7 +68,6 @@ or vertically. Please consider carefully the size of the ships and the battlefie
         print(table)
         print("Ship number {}!".format(i))
         ship_locations[i] = multiplayer_functions.get_details_for_location()
-        table = multiplayer_functions.refresh_table(table, ship_locations, ships)
         return table
     return table
 
